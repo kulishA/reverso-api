@@ -1,4 +1,4 @@
-package domain
+package reverso_api
 
 type TranslationRequest struct {
 	Format  string  `json:"format"`
