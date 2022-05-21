@@ -24,9 +24,30 @@ type TranslationResponse struct {
 	Translation       []string          `json:"translation"`
 	Engines           []string          `json:"engines"`
 	LanguageDetection LanguageDetection `json:"language_detection"`
-	ContextResults    string            `json:"contextResults"`
+	ContextResults    ContextResult     `json:"contextResults"`
 	Truncated         bool              `json:"truncated"`
 	TimeTaken         int               `json:"timeTaken"`
+}
+
+type ContextResult struct {
+	RudeWords             bool     `json:"rudeWords"`
+	Colloquialisms        bool     `json:"colloquialisms"`
+	RiskyWords            bool     `json:"riskyWords"`
+	Results               []Result `json:"results"`
+	TotalContextCallsMade int      `json:"totalContextCallsMade"`
+	TimeTakenContext      int      `json:"timeTakenContext"`
+}
+
+type Result struct {
+	Translation     string      `json:"translation"`
+	SourceExamples  []string    `json:"sourceExamples"`
+	TargetExamples  []string    `json:"targetExamples"`
+	Rude            bool        `json:"rude"`
+	Colloquial      bool        `json:"colloquial"`
+	PartOfSpeech    interface{} `json:"partOfSpeech"`
+	Frequency       int         `json:"frequency"`
+	Vowels          interface{} `json:"vowels"`
+	Transliteration interface{} `json:"transliteration"`
 }
 
 type LanguageDetection struct {

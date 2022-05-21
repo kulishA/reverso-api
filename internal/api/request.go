@@ -17,12 +17,11 @@ func postRequest(path string, data interface{}) (response []byte, err error) {
 
 	preparedData := bytes.NewBuffer(jsonData)
 
-	client := http.Client{
-		Timeout: time.Second * 5,
-	}
-
 	url := fmt.Sprintf("%s/%s", apiUrl, path)
-	resp, err := client.Post(url, contentType, preparedData)
+
+	client := newHttpClient(&http.Client{Timeout: 5 * time.Second})
+
+	resp, err := client.post(url, contentType, preparedData)
 	defer resp.Body.Close()
 
 	if err != nil {

@@ -10,9 +10,10 @@ type TranslateInterface interface {
 }
 
 type ReversoApi struct {
-	Translate TranslateInterface
+	Translation TranslateInterface
 }
 
 func NewReversoApi() *ReversoApi {
-	return &ReversoApi{Translate: api.NewTranslation()}
+
+	return &ReversoApi{Translation: api.NewTranslation()}
 }

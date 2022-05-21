@@ -11,8 +11,8 @@ func main() {
 
 	req := domain.TranslationRequest{
 		Format: "text",
-		From:   reverso_api.RU,
-		To:     reverso_api.ENG,
+		From:   reverso_api.ENG,
+		To:     reverso_api.RU,
 		Input:  "Hello world!",
 		Options: domain.Options{
 			SentenceSplitter:  true,
@@ -22,7 +22,7 @@ func main() {
 		},
 	}
 
-	t, err := r.Translate.Translate(&req)
+	t, err := r.Translation.Translate(&req)
 	if err != nil {
 		fmt.Println(err.Error())
 		return

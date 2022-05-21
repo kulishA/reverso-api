@@ -2,7 +2,6 @@ package api
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/kulishA/reverso-api/domain"
 )
 
@@ -20,8 +19,7 @@ func (t *Translation) Translate(data *domain.TranslationRequest) (*domain.Transl
 	if err != nil {
 		return nil, err
 	}
-
-	fmt.Println(string(d))
+	
 	err = json.Unmarshal(d, &res)
 	if err != nil {
 		return nil, err
