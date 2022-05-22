@@ -8,7 +8,7 @@ This API is not official! It allows you to manipulate with your text in differen
 - [Installing](#installing)
 - [Usage](#usage)
 - [Examples](#examples)
-  - [Translation] (#translation)
+  - [Translation](#translation)
 
 ## Installing
 ```bash
