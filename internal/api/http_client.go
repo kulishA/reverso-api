@@ -1,12 +1,8 @@
 package api
 
 import (
-	"bytes"
-	"encoding/json"
-	"fmt"
 	"github.com/corpix/uarand"
 	"io"
-	"io/ioutil"
 	"net/http"
 )
 
@@ -33,29 +29,4 @@ func (c *httpClient) post(url, contentType string, body io.Reader) (*http.Respon
 
 func (c *httpClient) do(req *http.Request) (*http.Response, error) {
 	return c.c.Do(req)
-}
-
-func (c *httpClient) PostRequest(path string, data interface{}) (response []byte, err error) {
-	jsonData, err := json.Marshal(data)
-	if err != nil {
-		return nil, err
-	}
-
-	preparedData := bytes.NewBuffer(jsonData)
-
-	url := fmt.Sprintf("%s/%s", apiUrl, path)
-	resp, err := c.post(url, contentType, preparedData)
-	defer resp.Body.Close()
-
-	if err != nil {
-		return nil, err
-	}
-
-	body, err := ioutil.ReadAll(resp.Body)
-
-	if err != nil {
-		return nil, err
-	}
-
-	return body, err
 }
